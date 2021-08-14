@@ -1,6 +1,6 @@
 import { screen, render } from '@testing-library/react'
-import { sum } from '../sum'
-import { ComponentTest } from '../component'
+import { sum } from '../../sum'
+import { ComponentTest } from '../../component'
 import '@testing-library/jest-dom/'
 
 describe('testing sum', () => {
