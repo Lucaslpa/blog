@@ -1,16 +1,22 @@
 html,
 body {
-  padding: 0;
+  padding: 0; 
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+border: solid 1px blue;
 }
 
 a {
   color: inherit;
   text-decoration: none;
 }
+h1 {
+    margin:0;
+    padding:0
+}
 
 * {
   box-sizing: border-box;
 }
+

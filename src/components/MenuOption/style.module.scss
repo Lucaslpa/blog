@@ -1,0 +1,55 @@
+.Wrapper {
+  list-style: none;
+  width: 100%;
+  max-width: 120px;
+  position: relative;
+  height: 50px;
+}
+.option {
+    color: rgb(246, 246, 248);
+  background-color: rgb(124, 17, 212);
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.OptionMenu {
+  width: 100% !important;
+  height: 100% !important;
+  @extend .option;
+}
+.ExtraOptions {
+  flex-direction: column;
+  padding: 0;
+  margin: 0; 
+  transform-origin: top;
+  transition: 0.3s;
+  font-size: Roboto;
+  font-weight: 400;
+  overflow: hidden;
+  z-index: 100; 
+  * {
+    padding: 10px;
+    list-style: none;
+    width: 100%;
+    &:hover {
+        background: rgb(83, 7, 145);
+    }
+  }
+  position: absolute;
+  white-space: nowrap;
+  width: 100%;
+  @extend .option;
+}
+.ExtraOptions--closed {
+      @extend .ExtraOptions;
+      height: 0px;
+      transition: 0.1s;
+}
+
+.ExtraOptions--open {
+     @extend .ExtraOptions;   
+     height: auto;
+     transition: 0.1s; 
+}

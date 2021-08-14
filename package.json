@@ -7,15 +7,17 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint . --ext .ts",
-    "test": "npx jest",
+    "test": "npx jest --onlyChanged",
     "storybook": "start-storybook -p 6007",
     "build-storybook": "build-storybook"
   },
   "dependencies": {
+    "css-loader": "^5.0.0",
     "jest-css-modules-transform": "^4.3.0",
     "next": "11.1.0",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "style-loader": "^1.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.15.0",
