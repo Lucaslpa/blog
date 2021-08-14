@@ -18,4 +18,14 @@ describe('Testing MenuOption', () => {
     const finalClass = screen.getAllByRole('list')[0].className
     expect(finalClass).not.toBe(initialClass)
   })
+  it('MenuOption remove open class on mouse out', () => {
+    render(
+      <MenuOption Name="Home" extraOptions={['Tecnologia', 'Video Games']} />
+    )
+    const initialClass = screen.getAllByRole('list')[0].className
+    fireEvent.mouseEnter(screen.getAllByRole('listitem')[0])
+    fireEvent.mouseOut(screen.getAllByRole('listitem')[0])
+    const finalClass = screen.getAllByRole('list')[0].className
+    expect(finalClass).toBe(initialClass)
+  })
 })
