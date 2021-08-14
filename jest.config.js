@@ -7,5 +7,8 @@ module.exports = {
       tsconfig: './tsconfig.test.json',
     },
   },
-  
+  transform: {
+    ".+\\.(sass|scss)$": "jest-css-modules-transform"
+  },
+ 
 };
