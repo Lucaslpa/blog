@@ -1,0 +1,51 @@
+.Wrapper {
+    width: 100%;
+    max-width: 300px;
+    cursor: pointer;
+    transition: 0.3s;
+    height: auto;
+    position: relative;
+    background-color: white;
+    img {
+        width: 100%;
+    }
+    h4 {
+       margin:0;
+       padding: 15px;
+       word-wrap:break-word !important;
+    }
+    &:hover {
+        background-color: rgb(250, 250, 250);
+    }
+}
+
+
+.postInfos {
+    padding: 10px;
+    display: flex;
+    justify-content: space-around; 
+    align-items: center;
+    h5 {
+         background-color: rgb(113, 100, 228);
+         color: white;
+         padding: 7px;
+         font-size: 14px;
+         margin: 0 10% 0 0 ; 
+         font-family: Roboto;
+      }
+    div {
+        display:flex ;
+        flex-direction: column;
+        align-items: flex-end;
+        width: auto;
+        strong {
+            margin-left: 5px;
+            word-wrap:break-word !important;
+            color:rgba(167, 136, 252, 0.596)          
+        }
+        span {
+            color: rgb(185, 185, 185); 
+        }
+    }
+
+}

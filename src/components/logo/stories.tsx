@@ -7,12 +7,11 @@ const stories = {
     Text: '',
     Url: '',
   },
-  
 }
 
 export default stories
 
-export const logoWithoutURL = (args: any) => <Logo  />
+export const logoWithoutURL = (args: any) => <Logo />
 
 export const logoWithURL = (args: any) => (
   <Logo

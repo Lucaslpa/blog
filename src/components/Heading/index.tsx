@@ -1,5 +1,4 @@
 // eslint-disable-next-line no-shadow
-import { useEffect } from 'react'
 import styles from './style.module.scss'
 
 export interface props {

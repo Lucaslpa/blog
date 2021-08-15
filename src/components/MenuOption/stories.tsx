@@ -1,4 +1,4 @@
-import { MenuOption, props } from '.'
+import { MenuOption } from '.'
 
 const stories = {
   title: 'MenuOption',
@@ -12,7 +12,7 @@ export default stories
 
 export const MenuWithExtraOptions = () => (
   <MenuOption
-    extraOptions={['Tecnologia', 'Video Games', 'Extra', 'Extra']}
+    extraOptions={['Tecnologia', 'Video Games', 'Extra']}
     Name="Categorias"
   />
 )

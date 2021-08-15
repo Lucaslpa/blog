@@ -26,6 +26,7 @@
     "react/require-default-props": "off",
     "import/no-extraneous-dependencies": "off",
     "@typescript-eslint/no-extra-semi": "off",
-    "@next/next/no-page-custom-font": "off"
+    "@next/next/no-page-custom-font": "off",
+    "@next/next/no-img-element": "off"
   }
 }
