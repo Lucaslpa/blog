@@ -18,7 +18,7 @@ interface props {
 export const Post = ({ postData }: props) => (
   <Container>
     <div className={styles.Wrapper}>
-      <img src={postData.imgLink} alt={postData.alt} />
+      <img  src={postData.imgLink} alt={postData.alt} />
       <div className={styles.postInfos}>
         <h5>{postData.postInfos.category}</h5>
        <div> 
