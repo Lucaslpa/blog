@@ -1,20 +1,48 @@
 import { Container } from '../Container'
-import {Post} from '../Post'
+import { Post } from '../Post'
+import { ShowMore } from '../ShowMore'
+import styles from './style.module.scss'
 
-const postexample = {
-    title: 'Xbox video game',
-    imgLink:
-      'https://compass-ssl.xbox.com/assets/b8/bb/b8bbffcd-3e6c-4609-a361-ef8c1ab13349.jpg?n=X1S-2019_Superhero-1400_Star-Wars_1920x1080.jpg',
-    alt: 'Xbox Imagem',
-    postInfos: {
-      date: '14/08/2021',
-      author: 'Lucas',
-      category: 'Video Games',
-    },
+interface props {
+  data: [
+    {
+      title: string
+      imgLink: string
+      alt: string
+      postInfos: {
+        date: string
+        author: string
+        category: string
+      }
+    }
+  ]
+}
+
+export const Category = ({ data }: props) => {
+  if (data && data.length > 0) {
+    return (
+      <Container>
+        <div className={styles.wrapper}>
+          <h2 className={styles.title}>
+            Publicações relacionadas a {data[0].postInfos.category}
+          </h2>
+          <div>
+            {data &&
+              data.map((post) => (
+                <Post key={post.title} postData={post} type="Normal" />
+              ))}
+          </div>
+          <div className={styles.alignSelf}>
+            <ShowMore />
+          </div>
+        </div>
+      </Container>
+    )
   }
 
-export const Category = () => (
-  <Container>
-    <h1>Categóry</h1>
-  </Container>
-)
+  return (
+    <div className={styles.wrapper}>
+      <h1>Infelizmente nada foi encontrado.</h1>
+    </div>
+  )
+}

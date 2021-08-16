@@ -2,7 +2,7 @@ import { Container } from '../Container'
 import { Heading } from '../Heading'
 import styles from './style.module.scss'
 
-interface props {
+export interface props {
   postData: {
     title: string
     imgLink: string

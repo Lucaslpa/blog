@@ -21,14 +21,8 @@ describe('Post component', () => {
       'src'
     )
     const title = await screen.findAllByText(propsMock.title)
-    const category = await screen.findAllByText(propsMock.postInfos.category)
-    const author = await screen.findAllByText(propsMock.postInfos.author)
-    const date = await screen.findAllByText(propsMock.postInfos.date)
     expect(title[0]).toBeInTheDocument()
     expect(imgLink).toBe(propsMock.imgLink)
-    expect(category[0]).toBeInTheDocument()
-    expect(author[0]).toBeInTheDocument()  
-    expect(date[0]).toBeInTheDocument()
 })
 it('Elements receive correctly props in Featured', async () => {
     render(<Post postData={propsMock} type='Featured' />)

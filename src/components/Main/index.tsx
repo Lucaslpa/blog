@@ -1,57 +1,112 @@
+import { useEffect, useState } from 'react'
 import { ShowMore } from '../ShowMore'
 import { Post } from '../Post'
 import { Container } from '../Container'
 import styles from './style.module.scss'
 
-const postexample = {
-  title: 'Xbox video game',
-  imgLink:
-    'https://compass-ssl.xbox.com/assets/b8/bb/b8bbffcd-3e6c-4609-a361-ef8c1ab13349.jpg?n=X1S-2019_Superhero-1400_Star-Wars_1920x1080.jpg',
-  alt: 'Xbox Imagem',
+interface post {
+  title: string
+  imgLink: string
+  alt: string
   postInfos: {
-    date: '14/08/2021',
-    author: 'Lucas',
-    category: 'Video Games',
-  },
+    date: string
+    author: string
+    category: string
+  }
 }
 
-const LatestsMobile = () => (
-  <div className={styles.latestsMobile}>
-    <Post postData={postexample} type="Normal" />
-    <Post postData={postexample} type="Normal" />
-    <Post postData={postexample} type="Normal" />
-  </div>
-)
+interface props {
+  data: post[]
+}
 
-const LatestsWeb = () => (
-  <div className={styles.latestsWeb}>
-    <Post postData={postexample} type="Featured" />
-    <div className={styles.subfeatured}>
-      <Post postData={postexample} type="SubFeatured" />
-      <Post postData={postexample} type="SubFeatured" />
+const LatestsMobile = ({ data }: props) => {
+  if (data && data.length > 0) {
+    return (
+      <div className={styles.latestsMobile}>
+        {data.map((posts) => (
+          <Post key={posts.title} postData={posts} type="Normal" />
+        ))}
+      </div>
+    )
+  }
+
+  return (
+    <div className={styles.latestsMobile}>
+      <h1>Nada aqui até o momento :(</h1>
     </div>
-  </div>
-)
+  )
+}
 
-export const Main = () => (
-  <Container>
-    <div className={styles.wrapper}>
-      <section className={styles.featured}>
-        <h2 className={styles.latest}>Destaques</h2>
-        <LatestsWeb />
-        <LatestsMobile />
-      </section>
-
-      <section className={styles.oldContainer}>
-        <h2 className={styles.oldest}>Outras publicações</h2>
-        <div className={styles.old}>
-          <Post postData={postexample} type="Normal" />
-          <Post postData={postexample} type="Normal" />
-          <Post postData={postexample} type="Normal" />
-          <Post postData={postexample} type="Normal" />
+const LatestsWeb = ({ data }: props) => {
+  if (data && data.length > 0 && data.length <= 4) {
+    return (
+      <div className={styles.latestsWeb}>
+        {data[0] && <Post postData={data[0]} type="Featured" />}
+        <div className={styles.subfeatured}>
+          {data[1] && <Post postData={data[1]} type="SubFeatured" />}
+          {data[2] && <Post postData={data[2]} type="SubFeatured" />}
         </div>
-      </section>
-      <ShowMore />
+      </div>
+    )
+  }
+
+  return (
+    <div className={styles.latestsWeb}>
+      <h1>Nada aqui até o momento :(</h1>
     </div>
-  </Container>
-)
+  )
+}
+
+const MorePubs = ({ data }: props) => {
+  if (data && data.length > 0) {
+    return (
+      <div className={styles.old}>
+        {data.map((posts) => (
+          <Post key={posts.title} postData={posts} type="Normal" />
+        ))}
+      </div>
+    )
+  }
+
+  return (
+    <div className={styles.old}>
+      <h1>Nada aqui até o momento :(</h1>
+    </div>
+  )
+}
+
+export const Main = ({ data }: props) => {
+  const [Featureds, setFeatureds] = useState<typeof data>()
+  const [MorePosts, setMorePosts] = useState<typeof data>()
+
+  function convertDataToStatesFeaturedsAndMorePosts() {
+    const featureds = data.slice(0, 3)
+    const moreposts = data.slice(3, 8)
+    setFeatureds(featureds)
+    setMorePosts(moreposts)
+  }
+
+  useEffect(() => convertDataToStatesFeaturedsAndMorePosts(), [])
+
+  return (
+    <Container>
+      <div className={styles.wrapper}>
+        <section className={styles.featured}>
+          <h2 className={styles.latest}>Destaques</h2>
+          {Featureds && (
+            <>
+              <LatestsWeb data={Featureds} />
+              <LatestsMobile data={Featureds} />
+            </>
+          )}
+        </section>
+
+        <section className={styles.oldContainer}>
+          <h2 className={styles.oldest}>Outras publicações</h2>
+          {MorePosts && <MorePubs data={MorePosts} />}
+        </section>
+        <ShowMore />
+      </div>
+    </Container>
+  )
+}
