@@ -1,5 +1,7 @@
+@import '../colors.scss';
 .Container {
     height: auto;
     width: auto;
+    background-color: $color--primary-background;
 }
 

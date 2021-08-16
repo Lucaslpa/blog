@@ -14,6 +14,7 @@ export const MenuOption = ({ Name, extraOptions }: props) => {
       onMouseEnter={() => setExtraMenuOpen(true)}
       onMouseLeave={() => setExtraMenuOpen(false)}
       onFocus={() => setExtraMenuOpen(!ExtraMenuOpen)}
+      onClick={() => setExtraMenuOpen(!ExtraMenuOpen)}
     >
       <div className={[styles.OptionMenu].join()}>
         <span>{Name}</span>

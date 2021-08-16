@@ -1,5 +1,7 @@
+@import '../colors.scss';
+
 .color {
- color: rgb(15, 26, 87);
+ color: $color--secondary-fonts;
  font-family: 'Roboto', sans-serif;
 }
 .big {

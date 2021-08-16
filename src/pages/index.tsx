@@ -1,5 +1,6 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
+import { Home as HomeComponent } from '../templates/Home'
 
 const Home: NextPage = () => (
   <div>
@@ -15,7 +16,7 @@ const Home: NextPage = () => (
         rel="stylesheet"
       />
     </Head>
-    <h1>Hello world</h1>
+    <HomeComponent />
   </div>
 )
 

@@ -17,7 +17,7 @@ export const Header = ({categories, logoName, URL}:props) => {
   return (
     <Container>
       <div className={styles.Wrapper}>
-        <Logo Text={logoName} Url={URL}/>
+        <Logo Text={logoName}  Url={URL}/>
         <nav className={styles.Menu}>
           <ul>
             <MenuOption Name="Início" />

@@ -1,3 +1,5 @@
+@import '../colors.scss';
+
 .Wrapper {
   list-style: none;
   width: 100%;
@@ -6,8 +8,8 @@
   height: 50px;
 }
 .option {
-    color: rgb(246, 246, 248);
-  background-color: rgb(124, 17, 212);
+  color: $color-fonts;
+  background-color: $color--primary;
   cursor: pointer;
   list-style: none;
   display: flex;
@@ -34,7 +36,7 @@
     list-style: none;
     width: 100%;
     &:hover {
-        background: rgb(83, 7, 145);
+        background: $color--primary-opacity;
     }
   }
   position: absolute;
