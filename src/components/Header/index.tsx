@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Container } from '../Container'
-import { Logo } from '../logo'
+import { Logo } from '../Logo'
 import { MenuOption } from '../MenuOption'
 import styles from './style.module.scss'
 

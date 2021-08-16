@@ -1,0 +1,24 @@
+.selectors {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 140px;
+  button {
+    font-size: calc(2rem + 1vw);
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    width: 50px;
+    border-radius: 60%;
+    color: rgb(136, 11, 238);
+    border: solid 0px rgb(136, 11, 238);
+    cursor: pointer; 
+    background-color: rgb(248, 248, 248);
+    transition: 0.3s;
+    &:hover {
+      background-color: rgb(206, 206, 206);
+    }
+  }
+}
