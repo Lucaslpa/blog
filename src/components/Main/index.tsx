@@ -1,7 +1,9 @@
-import { useEffect, useState } from 'react'
+/* eslint-disable react/no-array-index-key */
+import { useState } from 'react'
 import { ShowMore } from '../ShowMore'
 import { Post } from '../Post'
 import { Container } from '../Container'
+import { usePostsContext } from '../../context/posts'
 import styles from './style.module.scss'
 
 interface post {
@@ -15,16 +17,15 @@ interface post {
   }
 }
 
-interface props {
-  data: post[]
-}
+const LatestsMobile = () => {
+  const { state } = usePostsContext()
+  const featureds = state.posts.slice(0, 3)
 
-const LatestsMobile = ({ data }: props) => {
-  if (data && data.length > 0) {
+  if (featureds && featureds.length > 0) {
     return (
       <div className={styles.latestsMobile}>
-        {data.map((posts) => (
-          <Post key={posts.title} postData={posts} type="Normal" />
+        {featureds.map((posts: any, index: number) => (
+          <Post key={index} data={posts} type="Normal" />
         ))}
       </div>
     )
@@ -37,14 +38,17 @@ const LatestsMobile = ({ data }: props) => {
   )
 }
 
-const LatestsWeb = ({ data }: props) => {
-  if (data && data.length > 0 && data.length <= 4) {
+const LatestsWeb = () => {
+  const { state } = usePostsContext()
+  const featureds = state.posts.slice(0, 3)
+
+  if (featureds && featureds.length > 0 && featureds.length <= 4) {
     return (
       <div className={styles.latestsWeb}>
-        {data[0] && <Post postData={data[0]} type="Featured" />}
+        {featureds[0] && <Post data={featureds[0]} type="Featured" />}
         <div className={styles.subfeatured}>
-          {data[1] && <Post postData={data[1]} type="SubFeatured" />}
-          {data[2] && <Post postData={data[2]} type="SubFeatured" />}
+          {featureds[1] && <Post data={featureds[1]} type="SubFeatured" />}
+          {featureds[2] && <Post data={featureds[2]} type="SubFeatured" />}
         </div>
       </div>
     )
@@ -57,13 +61,20 @@ const LatestsWeb = ({ data }: props) => {
   )
 }
 
-const MorePubs = ({ data }: props) => {
-  if (data && data.length > 0) {
+const MorePubs = () => {
+  const { state } = usePostsContext()
+  const [morePages, setMorePages] = useState(7)
+  const currentPages = state.posts.slice(3, morePages)
+  const morePagesNextValue =
+    state.posts.length >= morePages ? morePages + 3 : morePages
+
+  if (currentPages && currentPages.length > 0) {
     return (
       <div className={styles.old}>
-        {data.map((posts) => (
-          <Post key={posts.title} postData={posts} type="Normal" />
+        {currentPages.map((postData: any, index: number) => (
+          <Post key={index} data={postData} type="Normal" />
         ))}
+        <ShowMore execFunc={() => setMorePages(morePagesNextValue)} />
       </div>
     )
   }
@@ -75,38 +86,20 @@ const MorePubs = ({ data }: props) => {
   )
 }
 
-export const Main = ({ data }: props) => {
-  const [Featureds, setFeatureds] = useState<typeof data>()
-  const [MorePosts, setMorePosts] = useState<typeof data>()
+export const Main = () => (
+  <Container>
+    <div className={styles.wrapper}>
+      <section className={styles.featured}>
+        <h2 className={styles.latest}>Destaques</h2>
 
-  function convertDataToStatesFeaturedsAndMorePosts() {
-    const featureds = data.slice(0, 3)
-    const moreposts = data.slice(3, 8)
-    setFeatureds(featureds)
-    setMorePosts(moreposts)
-  }
+        <LatestsWeb />
+        <LatestsMobile />
+      </section>
 
-  useEffect(() => convertDataToStatesFeaturedsAndMorePosts(), [])
-
-  return (
-    <Container>
-      <div className={styles.wrapper}>
-        <section className={styles.featured}>
-          <h2 className={styles.latest}>Destaques</h2>
-          {Featureds && (
-            <>
-              <LatestsWeb data={Featureds} />
-              <LatestsMobile data={Featureds} />
-            </>
-          )}
-        </section>
-
-        <section className={styles.oldContainer}>
-          <h2 className={styles.oldest}>Outras publicações</h2>
-          {MorePosts && <MorePubs data={MorePosts} />}
-        </section>
-        <ShowMore />
-      </div>
-    </Container>
-  )
-}
+      <section className={styles.oldContainer}>
+        <h2 className={styles.oldest}>Outras publicações</h2>
+        <MorePubs />
+      </section>
+    </div>
+  </Container>
+)

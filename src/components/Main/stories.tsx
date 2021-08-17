@@ -16,7 +16,23 @@ const stories = {
   title: 'Main',
   component: Main,
   args: {
-    data: [obj, obj, obj],
+    data: [
+      obj,
+      obj,
+      obj,
+      obj,
+      obj,
+      obj,
+      obj,
+      obj,
+      obj,
+      obj,
+      obj,
+      obj,
+      obj,
+      obj,
+      obj,
+    ],
   },
 }
 

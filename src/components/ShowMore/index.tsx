@@ -1,7 +1,9 @@
 import styles from './style.module.scss'
 
-export const ShowMore = () => (
+export const ShowMore = ({ execFunc }: { execFunc: () => any }) => (
   <div className={styles.selectors}>
-    <button type="button">Mostrar Mais</button>
+    <button onClick={() => execFunc()} type="button">
+      Mostrar Mais
+    </button>
   </div>
 )

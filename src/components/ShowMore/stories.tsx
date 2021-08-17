@@ -7,4 +7,4 @@ const stories = {
 
 export default stories
 
-export const ShowMoreD = () => <ShowMore />
+export const ShowMoreD = (args: any) => <ShowMore {...args} />

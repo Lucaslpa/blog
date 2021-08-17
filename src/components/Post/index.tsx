@@ -1,71 +1,63 @@
+import { post } from '../../pages/api/Posts'
 import { Container } from '../Container'
 import { Heading } from '../Heading'
 import styles from './style.module.scss'
 
 export interface props {
-  postData: {
-    title: string
-    imgLink: string
-    alt: string
-    postInfos: {
-      date: string
-      author: string
-      category: string
-    }
-  }
+  data: typeof post
   type: 'Featured' | 'SubFeatured' | 'Normal'
 }
 
-const PostNormal = ({ postData }: props) => (
+const PostNormal = ({ data }: props) => (
   <div className={styles.Wrapper}>
-    <img src={postData.imgLink} alt={postData.alt} />
-    <Heading size="small">{postData.title}</Heading>
+    <img src={data.img.url} alt={data.img.alt} />
+    <Heading size="small">{data.title}</Heading>
   </div>
 )
 
-const PostFeatured = ({ postData }: props) => (
+const PostFeatured = ({ data }: props) => (
   <div
     data-testid="wrapperf"
     className={styles.WrapperF}
     style={{
-      background: `url(${postData.imgLink})`,
+      background: `url(${data.img.url})`,
       backgroundSize: '100%',
       backgroundRepeat: 'no-repeat',
       backgroundPosition: 'center',
     }}
   >
     <div className={styles.postInfos}>
-      <h5>{postData.postInfos.category}</h5>
+      <h5>{data.category}</h5>
       <div>
-        <strong>{postData.postInfos.author}</strong>
-        <span>{postData.postInfos.date}</span>
+        <strong>{data.author.name}</strong>
+        <span>{data.date}</span>
       </div>
     </div>
-    <Heading size="small">{postData.title}</Heading>
+    <Heading size="small">{data.title}</Heading>
   </div>
 )
 
-const PostSubFeatured = ({ postData }: props) => (
+const PostSubFeatured = ({ data }: props) => (
   <div
     data-testid="wrapperS"
     className={styles.WrapperS}
     style={{
-      background: `url(${postData.imgLink})`,
+      background: `url(${data.img.url})`,
       backgroundSize: '100%',
       backgroundRepeat: 'no-repeat',
       backgroundPosition: 'center',
     }}
   >
-    <Heading size="small">{postData.title}</Heading>
+    <Heading size="small">{data.title}</Heading>
   </div>
 )
 
-export const Post = ({ postData, type }: props) => (
+export const Post = ({ data, type }: props) => (
   <Container>
-    {type === 'Normal' && <PostNormal postData={postData} type={type} />}
-    {type === 'Featured' && <PostFeatured postData={postData} type={type} />}
+    {type === 'Normal' && <PostNormal data={data} type={type} />}
+    {type === 'Featured' && <PostFeatured data={data} type={type} />}
     {type === 'SubFeatured' && (
-      <PostSubFeatured postData={postData} type={type} />
+      <PostSubFeatured data={data} type={type} />
     )}
   </Container>
 )

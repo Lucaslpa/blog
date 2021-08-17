@@ -1,10 +1,10 @@
 import { FullPost } from '.'
-import data from './datamock'
+import {post} from '../../pages/api/Posts'
 
 const stories = {
   title: 'FullPost',
   component: FullPost,
-  args: data,
+  args: post,
 }
 
 export default stories
