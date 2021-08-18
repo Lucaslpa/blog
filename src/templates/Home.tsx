@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { Main } from '../components/Main'
 import { Header } from '../components/Header'
 import { FullPost } from '../components/FullPost'
-import dataMock from '../components/FullPost/datamock'
+import dataMock from '../components/FullPost/postMock'
 
 import { Container } from '../components/Container'
 import { usePostsContext } from '../context/posts'

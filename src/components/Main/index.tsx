@@ -1,31 +1,23 @@
 /* eslint-disable react/no-array-index-key */
 import { useState } from 'react'
 import { ShowMore } from '../ShowMore'
-import { Post } from '../Post'
 import { Container } from '../Container'
 import { usePostsContext } from '../../context/posts'
+import { Post as PostComponent } from '../Post'
 import styles from './style.module.scss'
+// eslint-disable-next-line import/named
+import { Posts } from './PostsMock'
 
-interface post {
-  title: string
-  imgLink: string
-  alt: string
-  postInfos: {
-    date: string
-    author: string
-    category: string
-  }
+export interface props {
+  posts: typeof Posts
 }
 
-const LatestsMobile = () => {
-  const { state } = usePostsContext()
-  const featureds = state.posts.slice(0, 3)
-
-  if (featureds && featureds.length > 0) {
+const LatestsMobile = ({ posts }: props) => {
+  if (posts && posts.length > 0 && posts.length <= 4) {
     return (
       <div className={styles.latestsMobile}>
-        {featureds.map((posts: any, index: number) => (
-          <Post key={index} data={posts} type="Normal" />
+        {posts.map((postInfos) => (
+          <PostComponent post={postInfos} type="Normal" key={postInfos.id} />
         ))}
       </div>
     )
@@ -38,17 +30,14 @@ const LatestsMobile = () => {
   )
 }
 
-const LatestsWeb = () => {
-  const { state } = usePostsContext()
-  const featureds = state.posts.slice(0, 3)
-
-  if (featureds && featureds.length > 0 && featureds.length <= 4) {
+const LatestsWeb = ({ posts }: props) => {
+  if (posts && posts.length > 0 && posts.length <= 4) {
     return (
       <div className={styles.latestsWeb}>
-        {featureds[0] && <Post data={featureds[0]} type="Featured" />}
-        <div className={styles.subfeatured}>
-          {featureds[1] && <Post data={featureds[1]} type="SubFeatured" />}
-          {featureds[2] && <Post data={featureds[2]} type="SubFeatured" />}
+        <PostComponent post={posts[0]} type="Featured" />
+        <div>
+          <PostComponent post={posts[1]} type="SubFeatured" />
+          <PostComponent post={posts[2]} type="SubFeatured" />
         </div>
       </div>
     )
@@ -61,18 +50,17 @@ const LatestsWeb = () => {
   )
 }
 
-const MorePubs = () => {
-  const { state } = usePostsContext()
+const MorePubs = ({ posts }: props) => {
   const [morePages, setMorePages] = useState(7)
-  const currentPages = state.posts.slice(3, morePages)
+  const currentPages = posts.slice(3, morePages)
   const morePagesNextValue =
-    state.posts.length >= morePages ? morePages + 3 : morePages
+    posts.length >= morePages ? morePages + 3 : morePages
 
   if (currentPages && currentPages.length > 0) {
     return (
       <div className={styles.old}>
-        {currentPages.map((postData: any, index: number) => (
-          <Post key={index} data={postData} type="Normal" />
+        {currentPages.map((postInfos) => (
+          <PostComponent key={postInfos.id} post={postInfos} type="Normal" />
         ))}
         <ShowMore execFunc={() => setMorePages(morePagesNextValue)} />
       </div>
@@ -86,19 +74,19 @@ const MorePubs = () => {
   )
 }
 
-export const Main = () => (
+export const Main = ({ posts }: props) => (
   <Container>
     <div className={styles.wrapper}>
       <section className={styles.featured}>
         <h2 className={styles.latest}>Destaques</h2>
 
-        <LatestsWeb />
-        <LatestsMobile />
+        <LatestsWeb posts={posts.slice(0, 3)} />
+        <LatestsMobile posts={posts.slice(0, 3)} />
       </section>
 
       <section className={styles.oldContainer}>
         <h2 className={styles.oldest}>Outras publicações</h2>
-        <MorePubs />
+        <MorePubs posts={posts} />
       </section>
     </div>
   </Container>

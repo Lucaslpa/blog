@@ -1,63 +1,64 @@
-import { post } from '../../pages/api/Posts'
+import { Post as PostMock } from './mockPost'
 import { Container } from '../Container'
 import { Heading } from '../Heading'
 import styles from './style.module.scss'
 
+interface data {
+  post: typeof PostMock
+}
 export interface props {
-  data: typeof post
+  post: typeof PostMock
   type: 'Featured' | 'SubFeatured' | 'Normal'
 }
 
-const PostNormal = ({ data }: props) => (
+const PostNormal = ({ post }: data) => (
   <div className={styles.Wrapper}>
-    <img src={data.img.url} alt={data.img.alt} />
-    <Heading size="small">{data.title}</Heading>
+    <img src={post.Image.url} alt={post.AltImg} />
+    <Heading size="small">{post.title}</Heading>
   </div>
 )
 
-const PostFeatured = ({ data }: props) => (
+const PostFeatured = ({ post }: data) => (
   <div
     data-testid="wrapperf"
     className={styles.WrapperF}
     style={{
-      background: `url(${data.img.url})`,
+      background: `url(${post.Image.url})`,
       backgroundSize: '100%',
       backgroundRepeat: 'no-repeat',
       backgroundPosition: 'center',
     }}
   >
     <div className={styles.postInfos}>
-      <h5>{data.category}</h5>
+      <h5>{post.categories[0].Name}</h5>
       <div>
-        <strong>{data.author.name}</strong>
-        <span>{data.date}</span>
+        <strong>{post.authors[0].AuthorName}</strong>
+        <span>{post.published_at}</span>
       </div>
     </div>
-    <Heading size="small">{data.title}</Heading>
+    <Heading size="small">{post.title}</Heading>
   </div>
 )
 
-const PostSubFeatured = ({ data }: props) => (
+const PostSubFeatured = ({ post }: data) => (
   <div
     data-testid="wrapperS"
     className={styles.WrapperS}
     style={{
-      background: `url(${data.img.url})`,
+      background: `url(${post.Image.url})`,
       backgroundSize: '100%',
       backgroundRepeat: 'no-repeat',
       backgroundPosition: 'center',
     }}
   >
-    <Heading size="small">{data.title}</Heading>
+    <Heading size="small">{post.title}</Heading>
   </div>
 )
 
-export const Post = ({ data, type }: props) => (
+export const Post = ({ post, type }: props) => (
   <Container>
-    {type === 'Normal' && <PostNormal data={data} type={type} />}
-    {type === 'Featured' && <PostFeatured data={data} type={type} />}
-    {type === 'SubFeatured' && (
-      <PostSubFeatured data={data} type={type} />
-    )}
+    {type === 'Normal' && <PostNormal post={post} />}
+    {type === 'Featured' && <PostFeatured post={post} />}
+    {type === 'SubFeatured' && <PostSubFeatured post={post} />}
   </Container>
 )

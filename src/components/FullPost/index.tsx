@@ -1,39 +1,28 @@
 import { Heading } from '../Heading'
 import { Container } from '../Container'
 import styles from './style.module.scss'
+// eslint-disable-next-line import/named
+import { Post } from './postMock'
 
-interface props {
-  PostData: {
-    title: string
-    img?: {
-      url: string
-      alt: string
-    }
-    subtitle: string
-    date: string
-    author: {
-      name: string
-      description: string
-    }
-    content: string
-  }
+export interface props {
+  post: typeof Post
 }
 
-export const FullPost = ({ PostData }: props) => (
+export const FullPost = ({ post }: props) => (
   <Container>
     <div className={styles.wrapper}>
       <div className={styles.titles}>
-        <Heading size="big">{PostData.title}</Heading>
-        <Heading size="small">{PostData.subtitle}</Heading>
+        <Heading size="big">{post.title}</Heading>
+        <Heading size="small">{post.Description}</Heading>
       </div>
       <div className={styles.content}>
-        {PostData.img && <img alt={PostData.img.alt} src={PostData.img.url} />}
-        <p>{PostData.content}</p>
-        <span>{PostData.date}</span>
+        {post && <img alt={post.AltImg} src={post.Image.url} />}
+        <p>{post.Content}</p>
+        <span>{post.published_at}</span>
       </div>
       <div className={styles.author}>
-        <span>{PostData.author.name}</span>
-        <p>{PostData.author.description}</p>
+        <span>{post.authors[0].AuthorName}</span>
+        <p>{post.authors[0].AuthorDescription}</p>
       </div>
     </div>
   </Container>

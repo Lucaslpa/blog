@@ -1,16 +1,16 @@
 import { render, screen } from '@testing-library/react'
 import { FullPost } from '.'
-import dataMock from './datamock'
+import {Post} from './postMock'
 import '@testing-library/jest-dom'
 
 describe('FullPost component', () => {
-  it('FullPost should receive correctly props', async () => {
-    render(<FullPost PostData={dataMock.PostData} />)
-    const title =  await screen.findByText(dataMock.PostData.title)
-    const subTitle = await screen.findByText(dataMock.PostData.subtitle)
-    const date = await screen.findByText(dataMock.PostData.date)
-    const img = await  screen.findByAltText(dataMock.PostData.img.alt)
-    const author = await screen.findByText(dataMock.PostData.author.name)
+  it('FullPost render props', async () => {
+    render(<FullPost post={Post} />)
+    const title =  await screen.findByText(Post.title)
+    const subTitle = await screen.findByText(Post.Description)
+    const date = await screen.findByText(Post.published_at)
+    const img = await  screen.getByRole('img')
+    const author = await screen.findByText(Post.authors[0].AuthorName)
     expect(title).toBeInTheDocument()
     expect(subTitle).toBeInTheDocument()
     expect(date).toBeInTheDocument()

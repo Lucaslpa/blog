@@ -1,12 +1,12 @@
 import { useState } from 'react'
-import { post } from '../../pages/api/Posts'
+import { Post } from './mockPosts'
+import {Post as PostComponent} from '../Post'
 import { Container } from '../Container'
-import { Post } from '../Post'
 import { ShowMore } from '../ShowMore'
 import styles from './style.module.scss'
 
-interface props {
-  data: typeof post[]
+export interface props {
+  data: typeof Post[]
 }
 
 export const Category = ({ data }: props) => {
@@ -21,12 +21,12 @@ export const Category = ({ data }: props) => {
       <Container>
         <div className={styles.wrapper}>
           <h2 className={styles.title}>
-            Publicações relacionadas a {currentPages[0].category}
+            Publicações relacionadas a {currentPages[0].categories.join()}
           </h2>
           <div>
             {currentPages &&
-              currentPages.map((posts) => (
-                <Post key={posts.title} data={posts} type="Normal" />
+              currentPages.map((postInfos) => (
+                <PostComponent key={postInfos.id} post={postInfos} type="Normal" />
               ))}
           </div>
           <div className={styles.alignSelf}>

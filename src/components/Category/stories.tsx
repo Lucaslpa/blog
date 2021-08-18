@@ -1,15 +1,14 @@
-import { Category } from '.'
-import { Posts } from '../../pages/api/Posts'
-
-
+import { Meta } from '@storybook/react'
+import { Category, props } from '.'
+import { Post } from './mockPosts'
 
 const stories = {
   title: 'Category',
   component: Category,
   args: {
-    data: Posts,
+    data: [Post, Post, Post, Post, Post],
   },
-}
+} as Meta<props>
 
 export default stories
 
