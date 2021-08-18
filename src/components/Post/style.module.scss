@@ -60,7 +60,8 @@
   position: relative;
   height: 27vw;
   max-height: 300px; 
-  width: 50vw;
+  width: 100%;
+  max-width: 700px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -89,8 +90,8 @@
 /* Post subFeature*/
 .WrapperS {
   @extend .WrapperF;
-  width: 50vw;
-  max-width: 280px;
+  width: 100%;
+  min-width: 280px;
   height: 27vw;
   max-height: 150px;
 }

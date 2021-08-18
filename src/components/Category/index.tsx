@@ -21,7 +21,7 @@ export const Category = ({ data }: props) => {
       <Container>
         <div className={styles.wrapper}>
           <h2 className={styles.title}>
-            Publicações relacionadas a {currentPages[0].categories.join()}
+            Publicações relacionadas a {currentPages[0].categories[0].Name}
           </h2>
           <div>
             {currentPages &&

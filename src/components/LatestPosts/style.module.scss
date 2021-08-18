@@ -1,0 +1,51 @@
+@import '../colors.scss';
+
+.featured {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  max-width: 980px;
+}
+.latestTitle {
+  align-self: flex-start;
+  margin: 0;
+  padding: 10px;
+  width: 100%;
+  font-weight: 400;
+  color: $color-fonts;
+  background-color: $color--secondary;
+}
+
+.latestsWeb {
+  display: grid;
+  justify-content: center;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  column-gap: 0px;
+  grid-template-columns: 2fr 1fr;
+  width: 100%;
+}
+.latestsMobile {
+  display: none;
+  width: 100%;
+}
+
+@media screen and (max-width: 700px) {
+  .featured {
+    flex-direction: column;
+  }
+  .latestsWeb {
+    display: none;
+  }
+  .latestsMobile {
+    display: flex;
+    flex-direction: column;
+    div {
+      margin-top: 10px;
+    }
+  }
+}
