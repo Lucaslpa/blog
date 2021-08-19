@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Post } from './mockPosts'
-import {Post as PostComponent} from '../Post'
+import { Post as PostComponent } from '../Post'
 import { Container } from '../Container'
 import { ShowMore } from '../ShowMore'
 import styles from './style.module.scss'
@@ -26,7 +26,11 @@ export const Category = ({ data }: props) => {
           <div>
             {currentPages &&
               currentPages.map((postInfos) => (
-                <PostComponent key={postInfos.id} post={postInfos} type="Normal" />
+                <PostComponent
+                  key={postInfos.id}
+                  post={postInfos}
+                  type="Normal"
+                />
               ))}
           </div>
           <div className={styles.alignSelf}>
