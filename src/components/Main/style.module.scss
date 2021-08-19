@@ -1,12 +1,11 @@
 @import '../colors.scss';
 
-
 .wrapper {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom:50px !important;
+  padding-bottom: 50px !important;
 }
 .featured {
   display: flex;
@@ -35,7 +34,7 @@
     display: flex;
     flex-direction: column;
     div {
-        margin-top: 10px; ;
+      margin-top: 10px;
     }
   }
 }
@@ -50,22 +49,19 @@
   background-color: $color--secondary;
 }
 
-.subfeatured {
-}
-
 .oldContainer {
   margin-top: 100px;
   width: 100%;
   max-width: 700px;
 }
 .oldest {
-    align-self: flex-start;
-    margin: 0;
-    padding: 10px;
-    width: 100%;
-    font-weight: 400;
-    color: $color-fonts;
-    background-color: $color--secondary;
+  align-self: flex-start;
+  margin: 0;
+  padding: 10px;
+  width: 100%;
+  font-weight: 400;
+  color: $color-fonts;
+  background-color: $color--secondary;
 }
 .old {
   margin-bottom: 60px;

@@ -1,6 +1,7 @@
 export const categories = ['Video Games']
 
 export const post = {
+  title: 'Titulos exempplo',
   id: '6115a64fe2424427acab274a',
   published_at: '2021-08-12T22:53:10.816Z',
   Description: 'Saiba quais jogos possuem compatibilidade para cross-play',
@@ -27,3 +28,20 @@ export const post = {
     },
   ],
 }
+
+export const Posts = [
+  post,
+  post,
+  post,
+  post,
+  post,
+  post,
+  post,
+  post,
+  post,
+  post,
+  post,
+  post,
+  post,
+  post,
+]
