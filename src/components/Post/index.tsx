@@ -2,6 +2,7 @@ import { Post as PostMock } from './mockPost'
 import { Container } from '../Container'
 import { Heading } from '../Heading'
 import styles from './style.module.scss'
+import { useConvertDate } from '../../hooks/useConvertDate'
 
 interface data {
   post: typeof PostMock
@@ -33,7 +34,7 @@ const PostFeatured = ({ post }: data) => (
       <h5>{post.categories[0].Name}</h5>
       <div>
         <strong>{post.authors[0].AuthorName}</strong>
-        <span>{post.published_at}</span>
+        <span>{useConvertDate(post.published_at)}</span>
       </div>
     </div>
     <Heading size="small">{post.title}</Heading>

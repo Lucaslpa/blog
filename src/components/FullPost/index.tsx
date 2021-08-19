@@ -3,6 +3,7 @@ import { Container } from '../Container'
 import styles from './style.module.scss'
 // eslint-disable-next-line import/named
 import { Post } from './postMock'
+import { useConvertDate } from '../../hooks/useConvertDate'
 
 export interface props {
   post: typeof Post
@@ -18,7 +19,7 @@ export const FullPost = ({ post }: props) => (
       <div className={styles.content}>
         {post && <img alt={post.AltImg} src={post.Image.url} />}
         <p>{post.Content}</p>
-        <span>{post.published_at}</span>
+        <span>{useConvertDate(post.published_at)}</span>
       </div>
       <div className={styles.author}>
         <span>{post.authors[0].AuthorName}</span>

@@ -3,16 +3,14 @@ import styles from './style.module.scss'
 import { Post as PostComponent } from '../Post'
 import { Posts } from './postMock'
 import { ShowMore } from '../ShowMore'
+import { useGetMorePages } from '../../hooks/useGetMorePages'
 
 export interface props {
   posts: typeof Posts
 }
 
 export const MorePosts = ({ posts }: props) => {
-  const [morePages, setMorePages] = useState(7)
-  const currentPages = posts.slice(3, morePages)
-  const morePagesNextValue =
-    posts.length >= morePages ? morePages + 3 : morePages
+    const {PagesNextValue, currentPages, setMorePages} = useGetMorePages({ posts })
 
   if (currentPages && currentPages.length > 0) {
     return (
@@ -22,7 +20,7 @@ export const MorePosts = ({ posts }: props) => {
           {currentPages.map((postInfos) => (
             <PostComponent key={postInfos.id} post={postInfos} type="Normal" />
           ))}
-          <ShowMore execFunc={() => setMorePages(morePagesNextValue)} />
+          <ShowMore execFunc={() => setMorePages(PagesNextValue)} />
         </div>
       </section>
     )

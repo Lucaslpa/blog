@@ -7,6 +7,6 @@ import { Container } from '../components/Container'
 export const Home = () => (
   <Container>
     <Header logoName="Bloguinho" categories={['Tegnologia', 'Video Games']} />
-    <Main   posts={Posts} />
+    <Main posts={Posts} />
   </Container>
 )

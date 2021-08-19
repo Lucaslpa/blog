@@ -1,7 +1,6 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { Home as HomeComponent } from '../templates/Home'
-import { PostsContext } from '../context/posts'
 
 const Home: NextPage = () => (
   <div>
@@ -17,9 +16,8 @@ const Home: NextPage = () => (
         rel="stylesheet"
       />
     </Head>
-    <PostsContext>
-      <HomeComponent />
-    </PostsContext>
+
+    <HomeComponent />
   </div>
 )
 
