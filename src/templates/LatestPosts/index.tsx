@@ -1,5 +1,5 @@
 import { Post } from './mockPosts'
-import { Post as PostComponent } from '../Post'
+import { Post as PostComponent } from '../../components/Post'
 import styles from './style.module.scss'
 
 export interface props {

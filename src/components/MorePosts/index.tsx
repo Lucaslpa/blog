@@ -2,7 +2,7 @@ import { useState } from 'react'
 import styles from './style.module.scss'
 import { Post as PostComponent } from '../Post'
 import { Posts } from './postMock'
-import { ShowMore } from '../ShowMore'
+import { ShowMore } from '../../templates/ShowMore'
 import { useGetMorePages } from '../../hooks/useGetMorePages'
 
 export interface props {
