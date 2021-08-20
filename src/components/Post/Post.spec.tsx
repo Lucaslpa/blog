@@ -6,7 +6,7 @@ import { Post as PostMock } from './mockPost'
 describe('Post component', () => {
   it('Elements receive correctly props in Normal', async () => {
     render(<Post post={PostMock} type="Normal" />)
-    const imgLink = (await screen.getByRole('img')).getAttribute(
+    const imgLink = (screen.getByRole('img')).getAttribute(
       'src'
     )
     const title = await screen.getByRole('heading', {name:'Alguma coisa'})
@@ -22,7 +22,7 @@ describe('Post component', () => {
     const title = await screen.getByRole('heading',{name: 'Alguma coisa'})
     const category = await screen.findAllByText(PostMock.categories[0].Name)
     const author = await screen.findAllByText(PostMock.authors[0].AuthorName)
-    const date = await screen.findAllByText(PostMock.published_at)
+    const date = await screen.findAllByText('12/08/2021')
     expect(title).toBeInTheDocument()
     expect(category[0]).toBeInTheDocument()
     expect(author[0]).toBeInTheDocument()

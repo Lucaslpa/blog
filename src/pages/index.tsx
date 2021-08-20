@@ -4,8 +4,8 @@ import { Home as HomeComponent } from '../templates/Home'
 
 const Home: NextPage = () => (
   <div>
-      <Head>
-        <title>Page</title>
+    <Head>
+      <title>Page</title>
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link
         rel="preconnect"

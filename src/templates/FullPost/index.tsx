@@ -1,5 +1,5 @@
-import { Heading } from '../Heading'
-import { Container } from '../Container'
+import { Heading } from '../../components/Heading'
+import { Container } from '../../components/Container'
 import styles from './style.module.scss'
 // eslint-disable-next-line import/named
 import { Post } from './postMock'
