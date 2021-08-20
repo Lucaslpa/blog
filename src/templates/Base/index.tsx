@@ -16,7 +16,7 @@ export const Base = ({ children, settings }: props) => (
         logoName={settings.setting.LogoText}
         categories={settings.categories.map((e) => e.Name)}
       />
-      {children}
+      <main>{children}</main>
     </div>
   </Container>
 )

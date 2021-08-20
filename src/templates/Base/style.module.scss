@@ -1,4 +1,12 @@
+@import '../../styles/colors.scss';
+
 .wrapper {
   width: 100%;
-  height: 100vh;
+  height: auto;
+  main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+       
+  }
 }

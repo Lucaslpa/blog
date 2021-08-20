@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Post } from './mockPosts'
 import { Post as PostComponent } from '../../components/Post'
 import { Container } from '../../components/Container'
-import { ShowMore } from '../ShowMore'
+import { ShowMore } from '../../components/ShowMore'
 import styles from './style.module.scss'
 
 export interface props {

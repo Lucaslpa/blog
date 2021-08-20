@@ -1,7 +1,7 @@
 /* eslint-disable react/no-array-index-key */
 import { Container } from '../Container'
 import { LatestPosts } from '../../templates/LatestPosts'
-import { MorePosts } from '../MorePosts'
+import { MorePosts } from '../../templates/MorePosts'
 import styles from './style.module.scss'
 // eslint-disable-next-line import/named
 import { Posts } from './PostsMock'
