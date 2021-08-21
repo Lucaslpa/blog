@@ -5,6 +5,8 @@ import { MorePosts } from '../MorePosts'
 import { LatestPosts } from '../LatestPosts'
 import { Posts } from '../../api/Posts'
 
+import { Category } from '../Category'
+
 const stories = {
   title: 'Base',
   component: Base,
@@ -14,9 +16,15 @@ const stories = {
 } as Meta<props>
 export default stories
 
-export const StoriesD = (args: props) => (
+export const StoriesHome = (args: props) => (
   <Base {...args}>
     <LatestPosts posts={Posts} />
     <MorePosts posts={Posts} />
+  </Base>
+)
+
+export const StoriesCategory = (args: props) => (
+  <Base {...args}>
+    <Category data={Posts} settings={Settings.data} />
   </Base>
 )

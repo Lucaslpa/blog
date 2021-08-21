@@ -1,0 +1,1 @@
+export const AllURL = 'http://localhost:1337/graphql'

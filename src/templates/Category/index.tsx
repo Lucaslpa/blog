@@ -1,15 +1,17 @@
 import { useState } from 'react'
-import { Post } from './mockPosts'
+import { Post, Settings } from './mockPosts'
 import { Post as PostComponent } from '../../components/Post'
 import { Container } from '../../components/Container'
 import { ShowMore } from '../../components/ShowMore'
 import styles from './style.module.scss'
+import { Base } from '../Base'
 
 export interface props {
   data: typeof Post[]
+  settings: typeof Settings.data
 }
 
-export const Category = ({ data }: props) => {
+export const Category = ({ data, settings }: props) => {
   const [numberOfCurrentPages, setNumberOfCurrentPages] = useState(5)
   const value =
     data.length >= numberOfCurrentPages
@@ -20,22 +22,24 @@ export const Category = ({ data }: props) => {
     return (
       <Container>
         <div className={styles.wrapper}>
-          <h2 className={styles.title}>
-            Publicações relacionadas a {currentPages[0].categories[0].Name}
-          </h2>
-          <div>
-            {currentPages &&
-              currentPages.map((postInfos) => (
-                <PostComponent
-                  key={postInfos.id}
-                  post={postInfos}
-                  type="Normal"
-                />
-              ))}
-          </div>
-          <div className={styles.alignSelf}>
-            <ShowMore execFunc={() => setNumberOfCurrentPages(value)} />
-          </div>
+          <Base settings={settings}>
+            <h2 className={styles.title}>
+              Publicações relacionadas a {currentPages[0].categories[0].Name}
+            </h2>
+            <div>
+              {currentPages &&
+                currentPages.map((postInfos) => (
+                  <PostComponent
+                    key={postInfos.id}
+                    post={postInfos}
+                    type="Normal"
+                  />
+                ))}
+            </div>
+            <div className={styles.alignSelf}>
+              <ShowMore execFunc={() => setNumberOfCurrentPages(value)} />
+            </div>
+          </Base>
         </div>
       </Container>
     )
