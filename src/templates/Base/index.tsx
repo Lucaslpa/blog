@@ -13,8 +13,8 @@ export const Base = ({ children, settings }: props) => (
   <Container>
     <div className={styles.wrapper}>
       <Header
-        logoName={settings.setting.LogoText}
-        categories={settings.categories.map((e) => e.Name)}
+        logoName={settings ? settings.setting.LogoText : 'Blog'}
+        categories={settings ? settings.categories.map((e) => e.Name) : []}
       />
       <main>{children}</main>
     </div>

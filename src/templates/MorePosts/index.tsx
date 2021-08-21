@@ -27,8 +27,6 @@ export const MorePosts = ({ posts }: props) => {
   }
 
   return (
-    <div className={styles.old}>
-      <h1>Nada aqui até o momento :(</h1>
-    </div>
+    <div className={styles.old} />
   )
 }

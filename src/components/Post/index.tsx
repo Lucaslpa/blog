@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { Post as PostMock } from './mockPost'
 import { Container } from '../Container'
 import { Heading } from '../Heading'
@@ -58,8 +59,12 @@ const PostSubFeatured = ({ post }: data) => (
 
 export const Post = ({ post, type }: props) => (
   <Container>
-    {type === 'Normal' && <PostNormal post={post} />}
-    {type === 'Featured' && <PostFeatured post={post} />}
-    {type === 'SubFeatured' && <PostSubFeatured post={post} />}
+    <Link href={`Post/${post.id}`}>
+      <div>
+        {type === 'Normal' && <PostNormal post={post} />}
+        {type === 'Featured' && <PostFeatured post={post} />}
+        {type === 'SubFeatured' && <PostSubFeatured post={post} />}
+      </div>
+    </Link>
   </Container>
 )

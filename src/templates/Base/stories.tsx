@@ -25,6 +25,6 @@ export const StoriesHome = (args: props) => (
 
 export const StoriesCategory = (args: props) => (
   <Base {...args}>
-    <Category data={Posts} settings={Settings.data} />
+    <Category posts={Posts} settings={Settings.data} />
   </Base>
 )

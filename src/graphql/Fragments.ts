@@ -12,6 +12,7 @@ export const Fragments = gql`
   }
   fragment post on Posts {
     id
+    title: Title
     published_at
     Description
     Content

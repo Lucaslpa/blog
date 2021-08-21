@@ -7,17 +7,17 @@ import styles from './style.module.scss'
 import { Base } from '../Base'
 
 export interface props {
-  data: typeof Post[]
+  posts: typeof Post[]
   settings: typeof Settings.data
 }
 
-export const Category = ({ data, settings }: props) => {
+export const Category = ({ posts, settings }: props) => {
   const [numberOfCurrentPages, setNumberOfCurrentPages] = useState(5)
   const value =
-    data.length >= numberOfCurrentPages
+    posts.length >= numberOfCurrentPages
       ? numberOfCurrentPages + 3
       : numberOfCurrentPages
-  const currentPages = data.slice(0, numberOfCurrentPages)
+  const currentPages = posts.slice(0, numberOfCurrentPages)
   if (currentPages && currentPages.length > 0) {
     return (
       <Container>
