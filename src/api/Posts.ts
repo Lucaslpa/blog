@@ -45,3 +45,20 @@ export const Posts = [
   post,
   post,
 ]
+
+export const Settings = {
+    data: {
+      categories: [
+        {
+          Name: 'Video Games',
+        },
+        {
+          Name: 'Tecnologia',
+        },
+      ],
+      setting: {
+        LogoText: 'Logo',
+        LogoImage: null,
+      },
+    },
+  }

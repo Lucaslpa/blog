@@ -1,12 +1,14 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import Link from 'next/link'
 import styles from './style.module.scss'
 
 export interface props {
   Name: string
   extraOptions?: string[] | null
+  route?: string
 }
 
-export const MenuOption = ({ Name, extraOptions }: props) => {
+export const MenuOption = ({ Name, extraOptions, route }: props) => {
   const [ExtraMenuOpen, setExtraMenuOpen] = useState(false)
   return (
     <li
@@ -17,10 +19,16 @@ export const MenuOption = ({ Name, extraOptions }: props) => {
       onClick={() => setExtraMenuOpen(!ExtraMenuOpen)}
     >
       <div className={[styles.OptionMenu].join()}>
-        <span>{Name}</span>
+        {route ? (
+          <Link href={route}>
+            <span>{Name}</span>
+          </Link>
+        ) : (
+          <span>{Name}</span>
+        )}
       </div>
 
-      {!extraOptions ? null : (
+      {extraOptions && (
         <ul
           className={
             ExtraMenuOpen
@@ -29,7 +37,11 @@ export const MenuOption = ({ Name, extraOptions }: props) => {
           }
         >
           {extraOptions.length >= 1 &&
-            extraOptions.map((name) => <li key={name}>{name}</li>)}
+            extraOptions.map((name) => (
+              <Link key={name} href={`/${Name}/${name}`}>
+                <li>{name}</li>
+              </Link>
+            ))}
         </ul>
       )}
     </li>

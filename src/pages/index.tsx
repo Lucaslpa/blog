@@ -6,11 +6,6 @@ import { GetPosts } from '../api/GetPosts'
 import { Settings } from '../components/Menu/mockSettings'
 
 export default function Index({ posts, settings }: props) {
-  useEffect(() => {
-    GetPosts().then((e) => console.log(e))
-    console.log(posts, Settings)
-  })
-
   if (posts && settings) {
     return (
       <div>
@@ -64,10 +59,10 @@ export const getStaticProps: GetStaticProps<props> = async () => {
     data = null
   }
 
-  if ((!data || !data.posts || !data.posts.length)) {
-      return {
-          notFound: true
-      }
+  if (!data || !data.posts || !data.posts.length) {
+    return {
+      notFound: true,
+    }
   }
 
   return {

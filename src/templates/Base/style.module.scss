@@ -3,11 +3,19 @@
 .wrapper {
   width: 100%;
   height: auto;
-  main {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 100px;
-       
-  }
+  
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;     
+}
+
+.header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
 }

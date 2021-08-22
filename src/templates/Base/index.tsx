@@ -3,6 +3,8 @@ import { Container } from '../../components/Container'
 import { Header } from '../../components/Header'
 import { Settings } from './Mock'
 import styles from './style.module.scss'
+import { Logo } from '../../components/Logo'
+import { Menu } from '../../components/Menu'
 
 export interface props {
   settings: typeof Settings.data
@@ -12,11 +14,14 @@ export interface props {
 export const Base = ({ children, settings }: props) => (
   <Container>
     <div className={styles.wrapper}>
-      <Header
-        logoName={settings ? settings.setting.LogoText : 'Blog'}
-        categories={settings ? settings.categories.map((e) => e.Name) : []}
-      />
-      <main>{children}</main>
+      <header className={styles.header} >
+        <Logo
+          Text={settings.setting.LogoText}
+          Url={settings.setting.LogoImage}
+        />
+        <Menu settings={settings} />
+      </header>
+      <main className={styles.main} >{children}</main>
     </div>
   </Container>
 )

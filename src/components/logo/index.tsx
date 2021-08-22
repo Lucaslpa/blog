@@ -2,8 +2,8 @@ import { Heading } from '../Heading'
 import styles from './style.module.scss'
 
 interface props {
-  Text?: string
-  Url?: string
+  Text: string | null
+  Url: string | null
 }
 
 export const Logo = ({ Text, Url }: props) => {

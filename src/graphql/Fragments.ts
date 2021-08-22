@@ -24,6 +24,7 @@ export const Fragments = gql`
       ...images
     }
     categories {
+        
       Name
     }
     authors {

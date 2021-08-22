@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { MenuOption } from '../MenuOption'
 import { Settings } from './mockSettings'
 import styles from './style.module.scss'
@@ -9,7 +10,8 @@ export interface props {
 export const Menu = ({ settings }: props) => (
   <nav className={styles.Menu}>
     <ul>
-      <MenuOption Name="Início" />
+      <MenuOption Name="Início" route="/" />
+
       <MenuOption
         Name="Categorias"
         extraOptions={settings.categories.map((e) => e.Name)}

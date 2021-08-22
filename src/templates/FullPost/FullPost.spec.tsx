@@ -1,12 +1,12 @@
 import { getByRole, render, screen } from '@testing-library/react'
 import { FullPost } from '.'
-import { Post } from './postMock'
+import { Post, Settings } from './postMock'
 import '@testing-library/jest-dom'
 import { post } from '../../api/Posts'
 
 describe('FullPost component', () => {
   it('FullPost should render title, subTitle, date, img and author', async () => {
-    render(<FullPost post={Post} />)
+    render(<FullPost settings={Settings.data} post={Post} />)
     const title = await screen.findByText(Post.title)
     const subTitle = await screen.findByText(Post.Description)
     const date = await screen.findByText('Publicado em: 12/08/2021')
@@ -21,6 +21,7 @@ describe('FullPost component', () => {
   it(' "Tenha uma boa noite" should be rendered', async () => {
     render(
       <FullPost
+        settings={Settings.data}
         post={{
           ...post,
           authors: [{ id: '', AuthorName: '', AuthorDescription: '' }],
