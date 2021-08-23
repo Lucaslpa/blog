@@ -39,3 +39,31 @@ export const QueryPostsByCategory = gql`
     }
   }
 `
+export const QueryPostsByAuthor = gql`
+  ${Fragments}
+  query POSTS_BY_CATEGORY(
+    $start: Int!
+    $Name: String!
+    $limit: Int!
+    $sort: String!
+  ) {
+    categories {
+      Name
+    }
+    setting {
+      LogoText
+      LogoImage {
+        name
+        url
+      }
+    }
+    posts(
+      where: { Author : {Name: $Name }}
+      limit: $limit
+      sort: $sort
+      start: $start
+    ) {
+      ...posts
+    }
+  }
+`

@@ -3,7 +3,7 @@ import Head from 'next/head'
 import { Category, props } from '../../templates/Category'
 import { GetPostsByCategory, GetCategories } from '../../api/GetCategories'
 
-const Post = ({ posts, settings }: props) => {
+const Posts = ({ posts, settings }: props) => {
   if (posts && settings) {
     return (
       <div>
@@ -93,4 +93,4 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     notFound: true,
   }
 }
-export default Post
+export default Posts
