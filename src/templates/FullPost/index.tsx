@@ -4,6 +4,7 @@ import styles from './style.module.scss'
 import { Post, Settings } from './postMock'
 import { useConvertDate } from '../../hooks/useConvertDate'
 import { Base } from '../Base'
+import { Comments } from '../../components/Comments'
 
 export interface props {
   post: typeof Post
@@ -35,6 +36,12 @@ export const FullPost = ({ post, settings }: props) => {
             <strong>Tenha uma boa noite</strong>
           )}
         </div>
+
+        <Comments
+          id={post.id}
+          allowComments={post.AllowComments}
+          title={post.title}
+        />
       </div>
     </Base>
   )

@@ -30,5 +30,9 @@ export const MorePosts = ({ posts }: props) => {
     )
   }
 
-  return <div className={styles.old} />
+  return (
+    <div className={styles.old}>
+      <strong>...</strong>
+    </div>
+  )
 }
