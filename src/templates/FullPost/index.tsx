@@ -15,30 +15,28 @@ export const FullPost = ({ post, settings }: props) => {
   const { AuthorName, AuthorDescription } = post.authors[0]
 
   return (
-    <Container>
+    <Base settings={settings}>
       <div className={styles.wrapper}>
-        <Base settings={settings}>
-          <div className={styles.titles}>
-            <Heading size="big">{post.title}</Heading>
-            <Heading size="small">{post.Description}</Heading>
-          </div>
-          <div className={styles.content}>
-            {post && <img alt={post.AltImg} src={post.Image.url} />}
-            <p>{post.Content}</p>
-            <span>Publicado em: {useConvertDate(post.published_at)}</span>
-          </div>
-          <div className={styles.author}>
-            {AuthorName ? (
-              <>
-                <span>{AuthorName}</span>
-                <p>{AuthorDescription}</p>{' '}
-              </>
-            ) : (
-              <strong>Tenha uma boa noite</strong>
-            )}
-          </div>
-        </Base>
+        <div className={styles.titles}>
+          <Heading size="big">{post.title}</Heading>
+          <Heading size="small">{post.Description}</Heading>
+        </div>
+        <div className={styles.content}>
+          {post && <img alt={post.AltImg} src={post.Image.url} />}
+          <p>{post.Content}</p>
+          <span>Publicado em: {useConvertDate(post.published_at)}</span>
+        </div>
+        <div className={styles.author}>
+          {AuthorName ? (
+            <>
+              <span>{AuthorName}</span>
+              <p>{AuthorDescription}</p>{' '}
+            </>
+          ) : (
+            <strong>Tenha uma boa noite</strong>
+          )}
+        </div>
       </div>
-    </Container>
+    </Base>
   )
 }

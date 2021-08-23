@@ -1,9 +1,7 @@
-import type { GetStaticProps, NextPage } from 'next'
+import type { GetStaticProps } from 'next'
 import Head from 'next/head'
-import { useEffect } from 'react'
 import { Home as HomeComponent, props } from '../templates/Home'
 import { GetPosts } from '../api/GetPosts'
-import { Settings } from '../components/Menu/mockSettings'
 
 export default function Index({ posts, settings }: props) {
   if (posts && settings) {
@@ -54,7 +52,7 @@ export const getStaticProps: GetStaticProps<props> = async () => {
   let data = null
 
   try {
-    data = await GetPosts()
+    data = await GetPosts(0, 10)
   } catch (e) {
     data = null
   }

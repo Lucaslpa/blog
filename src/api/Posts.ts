@@ -1,7 +1,7 @@
 export const categories = ['Video Games']
 
 export const post = {
-  title: 'Titulos exempplo',
+  title: 'Title aqui',
   id: '6115a64fe2424427acab274a',
   published_at: '2021-08-12T22:53:10.816Z',
   Description: 'Saiba quais jogos possuem compatibilidade para cross-play',
@@ -47,18 +47,18 @@ export const Posts = [
 ]
 
 export const Settings = {
-    data: {
-      categories: [
-        {
-          Name: 'Video Games',
-        },
-        {
-          Name: 'Tecnologia',
-        },
-      ],
-      setting: {
-        LogoText: 'Logo',
-        LogoImage: null,
+  data: {
+    categories: [
+      {
+        Name: 'Video Games',
       },
+      {
+        Name: 'Tecnologia',
+      },
+    ],
+    setting: {
+      LogoText: 'Logo',
+      LogoImage: null,
     },
-  }
+  },
+}

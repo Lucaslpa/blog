@@ -1,13 +1,10 @@
-import { GetStaticPaths, GetStaticProps, NextPage, NextPageContext } from 'next'
-import { useRouter } from 'next/dist/client/router'
-import { useEffect } from 'react'
+import { GetStaticPaths, GetStaticProps } from 'next'
+
 import Head from 'next/head'
 import { props, FullPost } from '../../templates/FullPost'
 import { GetPost, GetPosts } from '../../api/GetPosts'
 
-
 const Post = ({ post, settings }: props) => {
-  
   if (post && settings) {
     return (
       <div>
@@ -55,7 +52,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   let paths: { params: { id: string } }[] = []
 
   try {
-    const posts = await GetPosts()
+    const posts = await GetPosts(0, 10)
     paths = posts.posts.map((post) => ({
       params: {
         id: post.id,
@@ -70,7 +67,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getStaticProps: GetStaticProps<props> = async ({ params }) => {
   if (params) {
     let data = null
     const { id } = params

@@ -1,32 +1,34 @@
-import { useState } from 'react'
 import styles from './style.module.scss'
 import { Post as PostComponent } from '../../components/Post'
-import { Posts } from './postMock'
+import { Posts as PostsType } from './postMock'
 import { ShowMore } from '../../components/ShowMore'
-import { useGetMorePages } from '../../hooks/useGetMorePages'
+import { useGetMorePosts } from '../../hooks/useGetMore'
 
 export interface props {
-  posts: typeof Posts
+  posts: typeof PostsType
 }
 
 export const MorePosts = ({ posts }: props) => {
-    const {PagesNextValue, currentPages, setMorePages} = useGetMorePages({ posts })
-
-  if (currentPages && currentPages.length > 0) {
+  const { Posts, buttonDisable, handleGetMorePosts } = useGetMorePosts({
+    posts,
+  })
+  const PostsSlice = Posts.slice(3)
+  if (PostsSlice && PostsSlice.length > 0) {
     return (
       <section className={styles.oldContainer}>
         <h2 className={styles.oldest}>Outras publicações</h2>
         <div className={styles.old}>
-          {currentPages.map((postInfos) => (
+          {PostsSlice.map((postInfos) => (
             <PostComponent key={postInfos.id} post={postInfos} type="Normal" />
           ))}
-          <ShowMore execFunc={() => setMorePages(PagesNextValue)} />
+          <ShowMore
+            execFunc={() => handleGetMorePosts()}
+            disable={buttonDisable}
+          />
         </div>
       </section>
     )
   }
 
-  return (
-    <div className={styles.old} />
-  )
+  return <div className={styles.old} />
 }

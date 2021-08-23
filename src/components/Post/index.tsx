@@ -59,7 +59,7 @@ const PostSubFeatured = ({ post }: data) => (
 
 export const Post = ({ post, type }: props) => (
   <Container>
-    <Link href={`Post/${post.id}`}>
+    <Link passHref href={`/Post/${post.id}`}>
       <div>
         {type === 'Normal' && <PostNormal post={post} />}
         {type === 'Featured' && <PostFeatured post={post} />}

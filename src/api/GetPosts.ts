@@ -1,7 +1,6 @@
 import { request } from 'graphql-request'
 import { AllURL } from './URLS'
-import { QueryPosts } from '../graphql/Query_Posts'
-import { QueryPost } from '../graphql/Query_Post'
+import { QueryPost, QueryPosts } from '../graphql/Post'
 import { post, Settings, Posts } from './Posts'
 
 type getPostReturn = {
@@ -15,16 +14,26 @@ type getPostsReturn = {
   categories: typeof Settings.data.categories
   setting: typeof Settings.data.setting
 }
-export const GetPosts = async (): Promise<getPostsReturn> => {
-  const response = await request(AllURL, QueryPosts)
+export const GetPosts = async (
+  start: number,
+  limit: number
+): Promise<getPostsReturn> => {
+  const variables = {
+    start,
+    limit,
+    sort: 'published_at:desc',
+  }
+  const response = await request(AllURL, QueryPosts, variables)
+
   return response
 }
 
 export const GetPost = async (id: string): Promise<getPostReturn> => {
   const variables = {
     id,
+    sort: 'createdAt:desc',
   }
 
-  const response = await request(AllURL, QueryPost(), variables)
+  const response = await request(AllURL, QueryPost, variables)
   return response
 }

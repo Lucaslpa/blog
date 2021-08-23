@@ -1,10 +1,10 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
 import { Category, props } from '../../templates/Category'
-import { GetByCategory, GetCategories } from '../../api/GetCategories'
+import { GetPostsByCategory, GetCategories } from '../../api/GetCategories'
 
 const Post = ({ posts, settings }: props) => {
-  console.log('asasd', posts, settings)
+
   if (posts && settings) {
     return (
       <div>
@@ -73,8 +73,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     let data = null
     const { slug } = params
     try {
-      data = await GetByCategory(String(slug))
-      console.log('aa', data)
+      data = await GetPostsByCategory(String(slug), 0, 3)
     } catch (e) {
       data = null
     }

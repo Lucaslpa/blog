@@ -10,9 +10,12 @@
 .titles {
   width: 100%;
   padding: 10px;
+  word-break: break-all;
   h4 {
     margin: 10px 0;
     color: rgba(0, 0, 0, 0.5);
+    word-break: break-all;
+
   }
 }
 .content {
@@ -27,6 +30,8 @@
   }
   p {
     font-size: calc(1rem + 0.6vw);
+    word-break: break-all;
+
   }
   span {
     color: rgb(165, 165, 165);

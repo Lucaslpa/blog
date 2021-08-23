@@ -2,8 +2,7 @@ import request from 'graphql-request'
 import { Settings } from '../templates/Home/postMock'
 import { Posts } from '../templates/MorePosts/postMock'
 import { AllURL } from './URLS'
-import { QueryPostsByCategory } from '../graphql/Query_Posts_By_Category'
-import { QueryGetCategories } from '../graphql/Query_Get_Categories'
+import { QueryCategories, QueryPostsByCategory } from '../graphql/Filters'
 
 type getPostsByCategoryReturn = {
   posts: typeof Posts
@@ -12,16 +11,22 @@ type getPostsByCategoryReturn = {
 }
 
 export const GetCategories = async (): Promise<string[]> => {
-  const response = await request(AllURL, QueryGetCategories)
+  const response = await request(AllURL, QueryCategories)
   return response
 }
 
-export const GetByCategory = async (
-  category: string
+export const GetPostsByCategory = async (
+  category: string,
+  start: number,
+  limit: number
 ): Promise<getPostsByCategoryReturn> => {
   const variables = {
     category,
+    start,
+    limit,
+    sort: 'published_at:desc',
   }
   const response = await request(AllURL, QueryPostsByCategory, variables)
+ 
   return response
 }

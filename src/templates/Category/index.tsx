@@ -1,10 +1,10 @@
-import { useState } from 'react'
+import { useRouter } from 'next/dist/client/router'
 import { Post, Settings } from './mockPosts'
 import { Post as PostComponent } from '../../components/Post'
-import { Container } from '../../components/Container'
 import { ShowMore } from '../../components/ShowMore'
 import styles from './style.module.scss'
 import { Base } from '../Base'
+import { useGetMorePostsCategory } from '../../hooks/useGetMore'
 
 export interface props {
   posts: typeof Post[]
@@ -12,36 +12,35 @@ export interface props {
 }
 
 export const Category = ({ posts, settings }: props) => {
-  const [numberOfCurrentPages, setNumberOfCurrentPages] = useState(5)
-  const value =
-    posts.length >= numberOfCurrentPages
-      ? numberOfCurrentPages + 3
-      : numberOfCurrentPages
-  const currentPages = posts.slice(0, numberOfCurrentPages)
-  if (currentPages && currentPages.length > 0) {
+  const { query } = useRouter()
+  const { Posts, buttonDisable, getMorePostsByCategory } =
+    useGetMorePostsCategory({ posts, category: String(query.slug) })
+
+  if (Posts && Posts.length > 0) {
     return (
-      <Container>
+      <Base settings={settings}>
         <div className={styles.wrapper}>
-          <Base settings={settings}>
-            <h2 className={styles.title}>
-              Publicações relacionadas a {currentPages[0].categories[0].Name}
-            </h2>
-            <div>
-              {currentPages &&
-                currentPages.map((postInfos) => (
-                  <PostComponent
-                    key={postInfos.id}
-                    post={postInfos}
-                    type="Normal"
-                  />
-                ))}
-            </div>
-            <div className={styles.alignSelf}>
-              <ShowMore execFunc={() => setNumberOfCurrentPages(value)} />
-            </div>
-          </Base>
+          <h2 className={styles.title}>
+            Publicações relacionadas a {Posts[0].categories[0].Name}
+          </h2>
+          <div>
+            {Posts &&
+              Posts.map((postInfos) => (
+                <PostComponent
+                  key={postInfos.id}
+                  post={postInfos}
+                  type="Normal"
+                />
+              ))}
+          </div>
+          <div className={styles.alignSelf}>
+            <ShowMore
+              execFunc={() => getMorePostsByCategory()}
+              disable={buttonDisable}
+            />
+          </div>
         </div>
-      </Container>
+      </Base>
     )
   }
 
