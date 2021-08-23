@@ -1,6 +1,5 @@
 import { ReactNode } from 'react'
 import { Container } from '../../components/Container'
-import { Header } from '../../components/Header'
 import { Settings } from './Mock'
 import styles from './style.module.scss'
 import { Logo } from '../../components/Logo'

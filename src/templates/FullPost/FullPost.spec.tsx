@@ -1,4 +1,4 @@
-import { getByRole, render, screen } from '@testing-library/react'
+import {  render, screen } from '@testing-library/react'
 import { FullPost } from '.'
 import { Post, Settings } from './postMock'
 import '@testing-library/jest-dom'
