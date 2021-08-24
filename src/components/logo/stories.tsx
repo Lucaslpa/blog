@@ -1,10 +1,10 @@
-import { Logo } from '.'
+import { Logo } from './Logo'
 
 const stories = {
   title: 'Logo',
   component: Logo,
   args: {
-    Text: '',
+    Text: 'sadasd',
     Url: '',
   },
 }
