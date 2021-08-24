@@ -54,16 +54,25 @@ export const getStaticPaths: GetStaticPaths = async () => {
   let paths: { params: { slug: string } }[] = []
 
   try {
-    const categories = await GetPosts(0, 20)
+    const data = await GetPosts(0, 20)
 
-    paths = categories.posts.map((post) => ({
+    const slugs = data.posts.map((post) => ({
       params: {
         slug: post.authors[0].AuthorName,
       },
     }))
+    paths.forEach((element) => {
+      slugs.forEach((slug) => {
+        if (element.params.slug !== slug.params.slug) {
+          paths.push(slug)
+        }
+      })
+    })
   } catch (e) {
     paths = []
   }
+
+  console.log(paths)
   return {
     paths,
     fallback: true,

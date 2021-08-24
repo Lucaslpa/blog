@@ -22,7 +22,6 @@ export const GetPostsByAuthor = async (
     sort: 'published_at:desc',
   }
 
-  console.log(variables)
   const response = await request(AllURL, QueryPostsByAuthor, variables)
 
   return response
