@@ -2,7 +2,7 @@ import styles from './style.module.scss'
 import { Post as PostComponent } from '../../components/Post'
 import { Posts as PostsType } from './postMock'
 import { ShowMore } from '../../components/ShowMore'
-import { useGetMorePosts, useGetMorePost } from '../../hooks/useGetMore'
+import { useGetMorePost } from '../../hooks/useGetMore'
 import { GetPosts } from '../../api/GetPosts'
 
 export interface props {

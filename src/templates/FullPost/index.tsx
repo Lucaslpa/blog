@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { Heading } from '../../components/Heading'
 import styles from './style.module.scss'
 // eslint-disable-next-line import/named
@@ -13,7 +14,7 @@ export interface props {
 
 export const FullPost = ({ post, settings }: props) => {
   const { AuthorName, AuthorDescription } = post.authors[0]
-
+  console.log(post.AllowComments)
   return (
     <Base settings={settings}>
       <div className={styles.wrapper}>
@@ -29,7 +30,9 @@ export const FullPost = ({ post, settings }: props) => {
         <div className={styles.author}>
           {AuthorName ? (
             <>
-              <span>{AuthorName}</span>
+              <Link passHref href={`/Author/${AuthorName}`}>
+                <span>{AuthorName}</span>
+              </Link>
               <p>{AuthorDescription}</p>{' '}
             </>
           ) : (

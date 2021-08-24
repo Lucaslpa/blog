@@ -41,7 +41,7 @@ export const QueryPostsByCategory = gql`
 `
 export const QueryPostsByAuthor = gql`
   ${Fragments}
-  query POSTS_BY_CATEGORY(
+  query POSTS_BY_AUTHOR(
     $start: Int!
     $Name: String!
     $limit: Int!
@@ -58,7 +58,7 @@ export const QueryPostsByAuthor = gql`
       }
     }
     posts(
-      where: { Author : {Name: $Name }}
+      where: { authors: { AuthorName: $Name } }
       limit: $limit
       sort: $sort
       start: $start

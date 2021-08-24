@@ -10,7 +10,7 @@ type getPostsByCategoryReturn = {
   setting: typeof Settings.data.setting
 }
 
-export const GetPostsByCategory = async (
+export const GetPostsByAuthor = async (
   author: string,
   start: number,
   limit: number
@@ -21,6 +21,8 @@ export const GetPostsByCategory = async (
     limit,
     sort: 'published_at:desc',
   }
+
+  console.log(variables)
   const response = await request(AllURL, QueryPostsByAuthor, variables)
 
   return response

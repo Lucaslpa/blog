@@ -1,7 +1,8 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
-import { Category, props } from '../../templates/Category'
-import { GetPostsByCategory, GetCategories } from '../../api/GetCategories'
+import { Author, props } from '../../templates/Author'
+import { GetPosts } from '../../api/GetPosts'
+import { GetPostsByAuthor } from '../../api/GetAuthor'
 
 const Posts = ({ posts, settings }: props) => {
   if (posts && settings) {
@@ -20,7 +21,7 @@ const Posts = ({ posts, settings }: props) => {
             rel="stylesheet"
           />
         </Head>
-        <Category settings={settings} posts={posts} />
+        <Author settings={settings} posts={posts} />
       </div>
     )
   }
@@ -51,11 +52,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
   let paths: { params: { slug: string } }[] = []
 
   try {
-    const categories = await GetCategories()
+    const categories = await GetPosts(0, 20)
 
-    paths = categories.map((name) => ({
+    paths = categories.posts.map((post) => ({
       params: {
-        slug: name,
+        slug: post.authors[0].AuthorName,
       },
     }))
   } catch (e) {
@@ -72,7 +73,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     let data = null
     const { slug } = params
     try {
-      data = await GetPostsByCategory(String(slug), 0, 3)
+      data = await GetPostsByAuthor(String(slug), 0, 10)
     } catch (e) {
       data = null
     }

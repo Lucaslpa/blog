@@ -1,4 +1,5 @@
 import { DiscussionEmbed } from 'disqus-react'
+import styles from './style.module.scss'
 
 interface props {
   id: string
@@ -7,10 +8,10 @@ interface props {
 }
 
 export const Comments = ({ id, title, allowComments }: props) => {
-  if (allowComments) return null
-
+  if (!allowComments) return null
+  console.log(allowComments)
   return (
-    <div>
+    <div className={styles.wrapper}>
       <DiscussionEmbed
         shortname="blog-12345"
         config={{

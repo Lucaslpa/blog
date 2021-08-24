@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react'
 import { post } from '../api/Posts'
-import { GetPosts } from '../api/GetPosts'
-import { GetPostsByCategory } from '../api/GetCategories'
 
 export interface props {
   posts: typeof post[]
