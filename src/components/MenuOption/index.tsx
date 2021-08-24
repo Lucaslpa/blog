@@ -18,15 +18,17 @@ export const MenuOption = ({ Name, extraOptions, route }: props) => {
       onFocus={() => setExtraMenuOpen(!ExtraMenuOpen)}
       onClick={() => setExtraMenuOpen(!ExtraMenuOpen)}
     >
-      <div className={[styles.OptionMenu].join()}>
-        {route ? (
-          <Link href={route}>
+      {route ? (
+        <Link href={route}>
+          <div className={[styles.OptionMenu].join()}>
             <span>{Name}</span>
-          </Link>
-        ) : (
+          </div>
+        </Link>
+      ) : (
+        <div className={[styles.OptionMenu].join()}>
           <span>{Name}</span>
-        )}
-      </div>
+        </div>
+      )}
 
       {extraOptions && (
         <ul
