@@ -50,9 +50,5 @@ export const Author = ({ posts, settings }: props) => {
     )
   }
 
-  return (
-    <div className={styles.wrapper}>
-      <h1>Infelizmente nada foi encontrado.</h1>
-    </div>
-  )
+  return null
 }

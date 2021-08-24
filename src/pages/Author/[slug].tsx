@@ -1,10 +1,16 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
+import { useRouter } from 'next/dist/client/router'
 import { Author, props } from '../../templates/Author'
 import { GetPosts } from '../../api/GetPosts'
 import { GetPostsByAuthor } from '../../api/GetAuthor'
+import { Loading } from '../../components/Loading'
 
 const Posts = ({ posts, settings }: props) => {
+  const router = useRouter()
+  if (router.isFallback) {
+    return <Loading />
+  }
   if (posts && settings) {
     return (
       <div>
@@ -40,10 +46,6 @@ const Posts = ({ posts, settings }: props) => {
           rel="stylesheet"
         />
       </Head>
-
-      <div>
-        <h1>Procurando...</h1>
-      </div>
     </div>
   )
 }

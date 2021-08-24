@@ -1,7 +1,8 @@
 @import '../../styles/colors.scss';
+
 .Container {
     height: auto;
     width: auto;
-    background-color: $color--primary-background;
+    background-color: var(--bg-color);
 }
 

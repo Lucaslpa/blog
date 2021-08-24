@@ -41,9 +41,7 @@ export default function Index({ posts, settings }: props) {
         />
       </Head>
 
-      <div>
-        <h1>Algo de errado aconteceu :(</h1>
-      </div>
+      
     </div>
   )
 }
