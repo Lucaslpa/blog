@@ -2,7 +2,7 @@ import { ReactNode } from 'react'
 import { Container } from '../../components/Container'
 import { Settings } from './Mock'
 import styles from './style.module.scss'
-import Logo from '../../components/Logo/Logo'
+import {Logo} from '../../components/Logod/Logo'
 import { Menu } from '../../components/Menu'
 
 export interface props {
