@@ -6,7 +6,8 @@ interface props {
   Url: string | null
 }
 
-export const Logo = ({ Text, Url }: props) => {
+
+ const Logo = ({ Text, Url }: props) => {
   if (Url) {
     return <img className={styles.imgLogo} src={Url} alt="Logo" />
   }
@@ -15,3 +16,4 @@ export const Logo = ({ Text, Url }: props) => {
   }
   return <Heading size="medium">Logo</Heading>
 }
+export default Logo
