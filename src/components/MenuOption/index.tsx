@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import Link from 'next/link'
 import styles from './style.module.scss'
 
@@ -19,7 +19,7 @@ export const MenuOption = ({ Name, extraOptions, route }: props) => {
       onClick={() => setExtraMenuOpen(!ExtraMenuOpen)}
     >
       {route ? (
-        <Link href={route}>
+        <Link passHref href={route}>
           <div className={[styles.OptionMenu].join()}>
             <span>{Name}</span>
           </div>
@@ -40,7 +40,7 @@ export const MenuOption = ({ Name, extraOptions, route }: props) => {
         >
           {extraOptions.length >= 1 &&
             extraOptions.map((name) => (
-              <Link key={name} href={`/${Name}/${name}`}>
+              <Link passHref  key={name} href={`/${Name}/${name}`}>
                 <li>{name}</li>
               </Link>
             ))}

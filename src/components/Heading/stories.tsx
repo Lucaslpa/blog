@@ -1,4 +1,3 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react'
 import { Heading, props } from '.'
 
 const stories = {

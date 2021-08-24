@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
-import { Logo } from './Logo'
+import  Logo  from './Logo'
 
 describe('test Logo component', () => {
   it('With only text should render Heading Component', () => {

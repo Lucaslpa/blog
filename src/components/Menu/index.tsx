@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import { MenuOption } from '../MenuOption'
 import { Settings } from './mockSettings'
 import styles from './style.module.scss'
