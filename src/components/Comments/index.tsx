@@ -9,7 +9,6 @@ interface props {
 
 export const Comments = ({ id, title, allowComments }: props) => {
   if (!allowComments) return null
-  console.log(allowComments)
   return (
     <div className={styles.wrapper}>
       <DiscussionEmbed

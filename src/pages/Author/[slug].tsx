@@ -72,7 +72,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
     paths = []
   }
 
-  console.log(paths)
   return {
     paths,
     fallback: true,

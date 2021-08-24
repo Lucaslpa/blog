@@ -7,7 +7,6 @@ import { post } from '../../api/Posts'
 describe('FullPost component', () => {
   it('FullPost should render title, subTitle, date, img and author', async () => {
     render(<FullPost settings={Settings.data} post={Post} />)
-    screen.debug()
     const title = await screen.getByRole('heading', {name: 'Title aqui'})
     const subTitle = await screen.findByText(Post.Description)
     const date = await screen.findByText('Publicado em: 12/08/2021')

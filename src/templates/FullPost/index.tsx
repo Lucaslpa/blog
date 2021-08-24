@@ -14,7 +14,6 @@ export interface props {
 
 export const FullPost = ({ post, settings }: props) => {
   const { AuthorName, AuthorDescription } = post.authors[0]
-  console.log(post.AllowComments)
   return (
     <Base settings={settings}>
       <div className={styles.wrapper}>
