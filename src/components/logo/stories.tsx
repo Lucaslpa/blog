@@ -11,7 +11,7 @@ const stories = {
 
 export default stories
 
-export const logoWithoutURL = (args: any) => <Logo />
+export const logoWithoutURL = (args: any) => <Logo {...args} />
 
 export const logoWithURL = (args: any) => (
   <Logo

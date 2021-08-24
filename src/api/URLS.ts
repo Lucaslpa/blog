@@ -1,1 +1,1 @@
-export const AllURL = 'http://localhost:1337/graphql'
+export const AllURL = 'https://blog-bloguinho-2.herokuapp.com/graphql'
