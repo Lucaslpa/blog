@@ -14,7 +14,7 @@ export const Comments = ({ id, title, allowComments }: props) => {
       <DiscussionEmbed
         shortname="blog-12345"
         config={{
-          url: `/Post/${id}`,
+          url: `https://blog-flax-sigma.vercel.app/Post/${id}`,
           identifier: id,
           title,
           language: 'pt_BR',
