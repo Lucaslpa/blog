@@ -14,7 +14,7 @@ export const Comments = ({ id, title, allowComments }: props) => {
       <DiscussionEmbed
         shortname="blog-12345"
         config={{
-          url: `Post/${id}`,
+          url: `/Post/${id}`,
           identifier: id,
           title,
           language: 'pt_BR',
