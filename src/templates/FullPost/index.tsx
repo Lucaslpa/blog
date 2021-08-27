@@ -6,6 +6,7 @@ import { Post, Settings } from './postMock'
 import { useConvertDate } from '../../hooks/useConvertDate'
 import { Base } from '../Base'
 import { Comments } from '../../components/Comments'
+import { ContentHTML } from '../../components/ContentHTML'
 
 export interface props {
   post: typeof Post
@@ -23,7 +24,7 @@ export const FullPost = ({ post, settings }: props) => {
         </div>
         <div className={styles.content}>
           {post && <img alt={post.AltImg} src={post.Image.url} />}
-          <p>{post.Content}</p>
+          <ContentHTML html={post.Content} />
           <span>Publicado em: {useConvertDate(post.published_at)}</span>
         </div>
         <div className={styles.author}>
